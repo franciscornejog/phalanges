@@ -52,12 +52,14 @@ button:hover {
 .btn-word-short {
   grid-column: 2;
 }
+
 /* Input */
 form {
   grid-column: span 5;
   display: flex;
   width: 100%;
   margin: 0 auto;
+  justify-content: center;
 }
 input {
   color: var(--tertiary-color);
