@@ -4,6 +4,10 @@
   --secondary-color: #ff8a65;
   --tertiary-color: #ffccbc;
 }
+@font-face {
+  font-family: 'Gallaudet';
+  src: url(fonts/GallaudetRegular.ttf) format('truetype');
+}
 
 /* Body */
 body {
