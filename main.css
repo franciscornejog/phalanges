@@ -5,8 +5,8 @@
   --tertiary-color: #ffccbc;
 }
 @font-face {
-  font-family: 'Gallaudet';
-  src: url(fonts/GallaudetRegular.ttf) format('truetype');
+  font-family: "Gallaudet"
+  src: url("fonts/Gallaudet.ttf");
 }
 
 /* Body */
