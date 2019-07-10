@@ -15,7 +15,8 @@ body {
 
   text-align: center;
   display: grid;
-  grid: repeat(6, 100px) / repeat(5, 20%);
+  grid: repeat(5, 100px) / repeat(5, 20%);
+  grid-gap: 10px 0;
 }
 header {
   grid-column: span 5;
@@ -29,13 +30,6 @@ header {
   font-size: 10em;
   line-height: 200px;
 }
-.btn-new-word {
-  grid-row: span 2;
-}
-.btn-replay {
-  grid-row: span 2;
-}
-
 /* Buttons */
 button {
   color: var(--primary-color);
@@ -49,15 +43,11 @@ button:hover {
   color: var(--tertiary-color);
   background-color: var(--primary-color);
 }
-.btn-word-short {
-  grid-column: 2;
-}
+
 /* Input */
 form {
   grid-column: span 5;
   display: flex;
-  width: 100%;
-  margin: 0 auto;
   justify-content: center;
 }
 input {
