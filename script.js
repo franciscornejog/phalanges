@@ -54,6 +54,30 @@ fastBtn.addEventListener('click', () => { time = fastSpeed; });
 
 let time = slowSpeed;
 
+// Speed Button
+let speedBtn = document.querySelector('.btn-speed');
+let speedMultiple = 1;
+checkSpeed(speedBtn.textContent);
+function checkSpeed(speed) {
+  if (speed === '1x') {
+    time = slowSpeed;
+  } else if (speed === '2x') {
+    time = mediumSpeed;
+  } else if (speed === '3x') {
+    time = fastSpeed;
+  }
+}
+
+speedBtn.addEventListener('click', () => {
+  if (speedMultiple < 3) {
+    speedBtn.textContent = ++speedMultiple + 'x';
+  } else {
+    speedMultiple = 1; 
+    speedBtn.textContent = speedMultiple + 'x';
+  }
+  checkSpeed(speedBtn.textContent);
+});
+
 // Change Speed
 let rateOfSpeed = 100;
 let decreaseSpeedBtn = document.querySelector('.btn-speed-decrease');
