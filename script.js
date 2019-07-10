@@ -41,20 +41,8 @@ wordForm.addEventListener('submit', function(e) {
 
 // Default Speed
 let slowSpeed = 1000;
-let slowBtn = document.querySelector('.btn-speed-slow');
-slowBtn.addEventListener('click', () => { time = slowSpeed; });
-
 let mediumSpeed = 700;
-let mediumBtn = document.querySelector('.btn-speed-medium');
-mediumBtn.addEventListener('click', () => { time = mediumSpeed; });
-
 let fastSpeed = 300;
-let fastBtn = document.querySelector('.btn-speed-fast');
-fastBtn.addEventListener('click', () => { time = fastSpeed; });
-
-let time = slowSpeed;
-
-// Speed Button
 let speedBtn = document.querySelector('.btn-speed');
 let speedMultiple = 1;
 checkSpeed(speedBtn.textContent);
@@ -78,13 +66,33 @@ speedBtn.addEventListener('click', () => {
   checkSpeed(speedBtn.textContent);
 });
 
-// Change Speed
-let rateOfSpeed = 100;
-let decreaseSpeedBtn = document.querySelector('.btn-speed-decrease');
-decreaseSpeedBtn.addEventListener('click', () => { time += rateOfSpeed; });
+// Control length of word
+let shortWords = "words-short.txt";
+let mediumWords = "words-medium.txt";
+let longWords = "words-long.txt";
+let diffBtn = document.querySelector('.btn-difficulty');
+checkDifficulty(diffBtn.childNodes);
+function checkDifficulty(diff) {
+  if (diff.length === 1) {
+    wordLength = shortWords;
+  } else if (diff.length === 2) {
+    wordLength = mediumWords;
+  } else if (diff.length === 3) {
+    wordLength = longWords;
+  } 
+}
 
-let increaseSpeedBtn = document.querySelector('.btn-speed-increase');
-increaseSpeedBtn.addEventListener('click', () => { time -= rateOfSpeed; });
+diffBtn.addEventListener('click', () => {
+  let i = document.createElement('i');
+  i.className = 'fas fa-fist-raised';
+  if (diffBtn.childNodes.length < 3) {
+    diffBtn.appendChild(i); 
+  } else {
+    diffBtn.removeChild(diffBtn.childNodes[0]); 
+    diffBtn.removeChild(diffBtn.childNodes[1]); 
+  }
+  checkDifficulty(diffBtn.childNodes);
+});
 
 // Show each letter of a word
 let wait = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -96,21 +104,5 @@ async function showLetter(word) {
   }
   letter.textContent = "";
 }
-
 let checkTime = () => { if (time <= 0) time = 100; }
-
-// Control length of word
-let shortWords = "words-short.txt";
-let shortWordsBtn = document.querySelector('.btn-word-short');
-shortWordsBtn.addEventListener('click', () => { wordLength = shortWords; })
-
-let mediumWords = "words-medium.txt";
-let mediumWordsBtn = document.querySelector('.btn-word-medium');
-mediumWordsBtn.addEventListener('click', () => { wordLength = mediumWords; })
-
-let longWords = "words-long.txt";
-let longWordsBtn = document.querySelector('.btn-word-long');
-longWordsBtn.addEventListener('click', () => { wordLength = longWords; })
-
-let wordLength = shortWords;
 
