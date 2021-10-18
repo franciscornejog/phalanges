@@ -59,7 +59,7 @@ function toggleCheatSheet() {
 // Input
 let wordForm = document.querySelector('form');
 let wordInput = document.querySelector('.input-word');
-let letter = document.querySelector('.letter');
+let letter = document.querySelector('.show-letter');
 wordForm.addEventListener('submit', function(e) {
   e.preventDefault();
   let input = wordInput.value;
