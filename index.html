@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Phalanges</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap"
-      rel="stylesheet"
-    />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
@@ -20,20 +16,25 @@
     <header>
       <h1>Phalanges</h1>
     </header>
-    <button class="btn-new-word"><i class="fas fa-step-forward"></i></button>
-    <section class="show-letter"></section>
-    <button class="btn-difficulty"><i class="fas fa-fist-raised"></i></button>
-    <button class="btn-replay"><i class="fas fa-redo"></i></button>
-    <button class="btn-speed">1x</button>
-    <form action="">
-      <input
-        class="input-word"
-        type="text"
-        name="word"
-        placeholder="Answer..."
-      />
-      <input type="submit" name="submit" class="fas fa-check" value="" />
-    </form>
+    <main>
+        <section class="show-letter"></section>
+        <button class="btn-mode"><img src="img/a.png"/></button>
+        <label class="label-speed">Speed</label>
+        <button class="btn-speed">Slower</button>
+        <label class="label-length">Length</label>
+        <button class="btn-length">Short</button>
+        <button class="btn-new-word"><i class="fas fa-step-forward"></i></button>
+        <button class="btn-replay"><i class="fas fa-redo"></i></button>
+        <form action="">
+            <input class="input-word"
+                   type="text"
+                   name="word"
+                   placeholder="Answer..."
+                   />
+            <input type="submit" name="submit" class="fas fa-check" value="" />
+        </form>
+        <section class="cheat-sheet"><img src="img/cheat-sheet.png"/></section>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>

@@ -20,10 +20,46 @@ function replayWord() {
     .then(array => showLetter(array[randomNumber]));
 }
 
+// Mode
+let currentMode = 'text';
+let modeBtn = document.querySelector('.btn-mode');
+modeBtn.addEventListener('click', changeMode);
+function checkMode(mode) {
+  if (mode === 'text') {
+    modeBtn.innerHTML = "<img src='img/a.png'/>";
+  } else {
+    modeBtn.innerHTML = "a";
+  }
+}
+function changeMode() {
+  if (currentMode === 'text') {
+    currentMode = 'image';
+  } else {
+    currentMode = 'text';
+  }
+  checkMode(currentMode);
+}
+
+// Cheatsheet
+let cheatSheetMode = 'open';
+let cheatSheet = document.querySelector('.cheat-sheet');
+cheatSheet.addEventListener('click', toggleCheatSheet);
+function toggleCheatSheet() {
+  if (cheatSheetMode === 'open') {
+    cheatSheetMode = 'close';
+    cheatSheet.innerHTML = "<i class='fas fa-arrow-down'></i>";
+    cheatSheet.classList.add("border-transition");
+  } else {
+    cheatSheetMode = 'open';
+    cheatSheet.innerHTML = "<img src='img/cheat-sheet.png'/>";
+    cheatSheet.classList.remove("border-transition");
+  }
+}
+
 // Input
 let wordForm = document.querySelector('form');
 let wordInput = document.querySelector('.input-word');
-let letter = document.querySelector('.show-letter');
+let letter = document.querySelector('.letter');
 wordForm.addEventListener('submit', function(e) {
   e.preventDefault();
   let input = wordInput.value;
@@ -40,65 +76,85 @@ wordForm.addEventListener('submit', function(e) {
 });
 
 // Default Speed
+let slowerSpeed = 1300;
 let slowSpeed = 1000;
-let mediumSpeed = 700;
-let fastSpeed = 300;
+let fastSpeed = 700;
+let fasterSpeed = 300;
 let speedBtn = document.querySelector('.btn-speed');
-let speedMultiple = 1;
-checkSpeed(speedBtn.textContent);
+let currentSpeed = speedBtn.textContent;
+checkSpeed(currentSpeed);
 function checkSpeed(speed) {
-  if (speed === '1x') {
+  if (speed === 'Slower') {
+    time = slowerSpeed;
+  } else if (speed === 'Slow') {
     time = slowSpeed;
-  } else if (speed === '2x') {
-    time = mediumSpeed;
-  } else if (speed === '3x') {
+  } else if (speed === 'Fast') {
     time = fastSpeed;
+  } else if (speed === 'Faster') {
+    time = fasterSpeed;
   }
 }
-
 speedBtn.addEventListener('click', () => {
-  if (speedMultiple < 3) {
-    speedBtn.textContent = ++speedMultiple + 'x';
-  } else {
-    speedMultiple = 1; 
-    speedBtn.textContent = speedMultiple + 'x';
+  switch (currentSpeed) {
+    case 'Slower':
+      currentSpeed = 'Slow';
+      break;
+    case 'Slow':
+      currentSpeed = 'Fast';
+      break;
+    case 'Fast':
+      currentSpeed = 'Faster';
+      break;
+    case 'Faster':
+      currentSpeed = 'Slower';
   }
-  checkSpeed(speedBtn.textContent);
+  speedBtn.textContent = currentSpeed;
+  checkSpeed(currentSpeed);
 });
 
 // Control length of word
-let shortWords = "words-short.txt";
-let mediumWords = "words-medium.txt";
-let longWords = "words-long.txt";
-let diffBtn = document.querySelector('.btn-difficulty');
-checkDifficulty(diffBtn.childNodes);
-function checkDifficulty(diff) {
-  if (diff.length === 1) {
-    wordLength = shortWords;
-  } else if (diff.length === 2) {
-    wordLength = mediumWords;
-  } else if (diff.length === 3) {
-    wordLength = longWords;
+let shortWords = "words/words-short.txt";
+let mediumWords = "words/words-medium.txt";
+let longWords = "words/words-long.txt";
+let lenBtn = document.querySelector('.btn-length');
+let currentLength = lenBtn.textContent;
+checkLength(currentLength);
+function checkLength(len) {
+  switch (len) {
+    case 'Short':
+      wordLength = shortWords;
+      break;
+    case 'Medium':
+      wordLength = mediumWords;
+      break;
+    case 'Long':
+      wordLength = longWords;
   } 
 }
-
-diffBtn.addEventListener('click', () => {
-  let i = document.createElement('i');
-  i.className = 'fas fa-fist-raised';
-  if (diffBtn.childNodes.length < 3) {
-    diffBtn.appendChild(i); 
-  } else {
-    diffBtn.removeChild(diffBtn.childNodes[0]); 
-    diffBtn.removeChild(diffBtn.childNodes[1]); 
+lenBtn.addEventListener('click', () => {
+  switch (currentLength) {
+    case 'Short':
+      currentLength = 'Medium';
+      break;
+    case 'Medium':
+      currentLength = 'Long';
+      break;
+    case 'Long':
+      currentLength = 'Short';
   }
-  checkDifficulty(diffBtn.childNodes);
+  lenBtn.textContent = currentLength;
+  checkLength(currentLength);
 });
 
 // Show each letter of a word
 let wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 async function showLetter(word) {
   for (let i = 0, len = word.length; i < len; i++) {
-    letter.textContent = word[i];
+    if (currentMode === 'text') {
+      letter.textContent = word[i];
+    } else {
+      letter.innerHTML = "<img src='img/" + word[i] + ".png'/>";
+    }
     checkTime();
     await wait(time);
   }
