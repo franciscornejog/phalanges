@@ -1,3 +1,5 @@
+import './style.css'
+
 // Get a random word and show it
 let randomNumber = 0;
 let newWordBtn = document.querySelector('.btn-new-word');
@@ -72,6 +74,7 @@ let fastSpeed = 700;
 let fasterSpeed = 300;
 let speedBtn = document.querySelector('.btn-speed');
 let currentSpeed = speedBtn.textContent;
+let time = slowerSpeed;
 checkSpeed(currentSpeed);
 function checkSpeed(speed) {
     if (speed === 'Slower') {
