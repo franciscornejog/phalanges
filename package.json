@@ -1,17 +1,21 @@
 {
   "name": "phalanges",
-  "version": "0.0.1",
+  "private": true,
+  "version": "0.0.0",
   "description": "A tool to help ASL Learners practice their fingerspelling comprehension.",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^2.8.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/franciscornejog/phalanges.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Francisco Cornejo-Garcia (franciscornejog)",
   "bugs": {
     "url": "https://github.com/franciscornejog/phalanges/issues"
   },
