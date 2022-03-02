@@ -6,7 +6,7 @@
 }
 @font-face {
   font-family: 'Gallaudet';
-  src: url('../fonts/Gallaudet.ttf');
+  src: url('fonts/Gallaudet.ttf');
 }
 
 /* Body */
