@@ -1,7 +1,7 @@
 import './style.css'
-import shortWords from './words/shortWords.json'
-import mediumWords from './words/mediumWords.json'
-import longWords from './words/longWords.json'
+import shortWords from '../words/shortWords.json'
+import mediumWords from '../words/mediumWords.json'
+import longWords from '../words/longWords.json'
 
 // Get a random word and show it
 let randomNumber = 0;
