@@ -1,6 +1,7 @@
 <script lang="ts">
   import Cheatsheet from './lib/Cheatsheet.svelte'
   import a from './assets/img/a.png'
+  import './assets/style.css'
 </script>
 
 <header>

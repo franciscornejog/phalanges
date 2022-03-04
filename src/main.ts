@@ -6,7 +6,6 @@ const app = new App({
 
 export default app
 
-import './style.css'
 import shortWords from './assets/words/shortWords.json'
 import mediumWords from './assets/words/mediumWords.json'
 import longWords from './assets/words/longWords.json'
