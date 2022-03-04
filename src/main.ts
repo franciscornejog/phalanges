@@ -1,7 +1,15 @@
+import App from './App.svelte'
+
+const app = new App({
+  target: document.getElementById('app')
+})
+
+export default app
+
 import './style.css'
-import shortWords from '../words/shortWords.json'
-import mediumWords from '../words/mediumWords.json'
-import longWords from '../words/longWords.json'
+import shortWords from './assets/words/shortWords.json'
+import mediumWords from './assets/words/mediumWords.json'
+import longWords from './assets/words/longWords.json'
 
 // Get a random word and show it
 let randomNumber = 0;
@@ -37,22 +45,6 @@ function changeMode() {
         currentMode = 'text';
     }
     checkMode(currentMode);
-}
-
-// Cheatsheet
-let cheatSheetMode = 'open';
-let cheatSheet = document.querySelector('.cheat-sheet');
-cheatSheet.addEventListener('click', toggleCheatSheet);
-function toggleCheatSheet() {
-    if (cheatSheetMode === 'open') {
-        cheatSheetMode = 'close';
-        cheatSheet.innerHTML = "<i class='fas fa-arrow-down'></i>";
-        cheatSheet.classList.add("border-transition");
-    } else {
-        cheatSheetMode = 'open';
-        cheatSheet.innerHTML = "<img src='img/cheat-sheet.png'/>";
-        cheatSheet.classList.remove("border-transition");
-    }
 }
 
 // Input
