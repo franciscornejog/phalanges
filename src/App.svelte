@@ -1,5 +1,6 @@
 <script lang="ts">
   import Cheatsheet from './lib/Cheatsheet.svelte'
+  import Display from './lib/Display.svelte'
   import a from './assets/img/a.png'
   import './assets/style.css'
 </script>
@@ -8,7 +9,7 @@
   <h1>Phalanges</h1>
 </header>
 <main>
-  <section class="show-letter"></section>
+  <Display/>
   <button class="btn-mode"><img src={a} alt="A picture of a hand signing the letter a."/></button>
   <label class="label-speed">Speed</label>
   <button class="btn-speed">Slower</button>
@@ -66,17 +67,6 @@ img {
     font-size: 6em;
     grid-column: 1 / 3;
     grid-row: 1 / 3;
-}
-
-/* Letter Display */
-.show-letter {
-  /*grid-column: span 3;
-  grid-row: span 2;*/
-  grid-column: 3 / 9;
-  grid-row: 1 / 6;
-  font-family: 'Gallaudet';
-  font-size: 15em;
-  line-height: 200px;
 }
 
 label {
