@@ -11,7 +11,7 @@
   {#if $isText}
     {@html $letter}
   {:else if $letter != ""}
-    <img src="src/assets/img/{$letter}.png" alt="A hand showing an ASL letter."/>
+    <img src="img/{$letter}.png" alt="A hand showing an ASL letter."/>
   {/if}
 </section>
 

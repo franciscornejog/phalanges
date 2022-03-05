@@ -1,5 +1,4 @@
 <script lang="ts">
-  import src from "../assets/img/cheatsheet.png"
   let isClosed: boolean = true;
 </script>
 
@@ -7,7 +6,7 @@
   {#if isClosed}
     <i class="fas fa-arrow-down"></i>
   {:else}
-    <img {src} alt="A list of hand symbols in ASL."/>
+    <img src="img/cheatsheet.png" alt="A list of hand symbols in ASL."/>
   {/if}
 </section>
 

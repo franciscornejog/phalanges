@@ -1,5 +1,4 @@
 <script lang="ts">
-  import src from "../assets/img/a.png"
   import { isText } from "./stores";
 
   function clickHandler() {
@@ -13,7 +12,7 @@
 
 <button on:click={clickHandler}>
   {#if $isText}
-    <img {src} alt="A picture of a hand signing the letter a."/>
+    <img src="img/a.png" alt="A picture of a hand signing the letter a."/>
   {:else}
     a
   {/if}
