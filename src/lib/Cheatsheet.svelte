@@ -1,13 +1,13 @@
 <script lang="ts">
-  import cheatsheet from '../assets/img/cheatsheet.png'
+  import src from "../assets/img/cheatsheet.png"
   let isClosed: boolean = true;
 </script>
 
 <section class:isClosed on:click="{() => isClosed = !isClosed}">
   {#if isClosed}
-      <i class='fas fa-arrow-down'></i>
+    <i class="fas fa-arrow-down"></i>
   {:else}
-      <img src={cheatsheet} alt="A list of hand symbols in ASL."/>
+    <img {src} alt="A list of hand symbols in ASL."/>
   {/if}
 </section>
 

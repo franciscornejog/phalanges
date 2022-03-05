@@ -9,33 +9,6 @@ export default app
 import mediumWords from './assets/words/mediumWords.json'
 import longWords from './assets/words/longWords.json'
 
-// Replay word
-let replayBtn = document.querySelector('.btn-replay');
-replayBtn.addEventListener('click', replayWord);
-function replayWord() {
-    // showLetter(wordLength[randomNumber]);
-}
-
-// Mode
-let currentMode = 'text';
-let modeBtn = document.querySelector('.btn-mode');
-modeBtn.addEventListener('click', changeMode);
-function checkMode(mode) {
-    if (mode === 'text') {
-        modeBtn.innerHTML = "<img src='img/a.png'/>";
-    } else {
-        modeBtn.innerHTML = "a";
-    }
-}
-function changeMode() {
-    if (currentMode === 'text') {
-        currentMode = 'image';
-    } else {
-        currentMode = 'text';
-    }
-    checkMode(currentMode);
-}
-
 // Input
 let wordForm = document.querySelector('form');
 let wordInput = document.querySelector('.input-word');

@@ -1,8 +1,8 @@
 <script lang="ts">
   import './assets/style.css'
-  import a from './assets/img/a.png'
   import Display from './lib/Display.svelte'
   import WordButton from './lib/WordButton.svelte';
+  import ModeButton from './lib/ModeButton.svelte';
   import Cheatsheet from './lib/Cheatsheet.svelte';
   import { isRunning } from './lib/stores';
 
@@ -20,7 +20,7 @@
     <Display/>
   {/if}
   </section>
-  <button class="btn-mode"><img src={a} alt="A picture of a hand signing the letter a."/></button>
+  <ModeButton/>
   <label class="label-speed">Speed</label>
   <button class="btn-speed">Slower</button>
   <label class="label-length">Length</label>
@@ -66,17 +66,8 @@ form {
   justify-content: center;
 }
 
-/* Image */
-img {
+:global(img) {
     width: 100%;
-}
-
-/* Button Mode */
-.btn-mode {
-    font-family: 'Gallaudet';
-    font-size: 6em;
-    grid-column: 1 / 3;
-    grid-row: 1 / 3;
 }
 
 label {
