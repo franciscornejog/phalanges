@@ -1,16 +1,13 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-  import { randomIndex, wordType } from './stores';
+  import { isRunning, randomIndex, wordType } from './stores';
 
   export let isNewWord = false;
-
-  const dispatch = createEventDispatcher();
 
   function clickHandler() {
     if (isNewWord) {
       $randomIndex = Math.floor(Math.random() * $wordType.length);
     }
-    dispatch('newWordEvent');
+    $isRunning = true;
   }
 </script>
 

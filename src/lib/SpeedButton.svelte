@@ -30,7 +30,7 @@
 </script>
 
 <label>Speed</label>
-<button>{speedDisplay}</button>
+<button on:click={clickHandler}>{speedDisplay}</button>
 
 <style>
   label, button {

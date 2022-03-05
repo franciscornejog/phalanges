@@ -1,23 +1,26 @@
 <script lang="ts">
-  import { onInterval } from "./utils";
-  import { isRunning, isText, randomIndex, time, wordType } from "./stores";
-
-  let i: number = 0;
-  let letter: string = "";
-  let word: string = $wordType[$randomIndex];
-  onInterval(showLetter, $time);
-  function showLetter() {
-    if (i < word.length) {
-      letter = word[i];
-    } else {
-      $isRunning = false;
-    }
-    i++;
-  }
+  import Word from "./Word.svelte";
+  import { isRunning, isText, letter } from "./stores";
 </script>
 
-{#if $isText}
-  {letter}
-{:else if letter != ""}
-  <img src="src/assets/img/{letter}.png" alt="A hand showing an ASL letter."/>
+{#if $isRunning}
+  <Word/>
 {/if}
+
+<section>
+  {#if $isText}
+    {@html $letter}
+  {:else if $letter != ""}
+    <img src="src/assets/img/{$letter}.png" alt="A hand showing an ASL letter."/>
+  {/if}
+</section>
+
+<style>
+  section {
+    grid-column: 3 / 9;
+    grid-row: 1 / 6;
+    font-family: "Gallaudet";
+    font-size: 15em;
+    line-height: 200px;
+  }
+</style>
