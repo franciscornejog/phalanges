@@ -1,10 +1,12 @@
 <script lang="ts">
-  import './assets/style.css'
-  import Display from './lib/Display.svelte'
-  import WordButton from './lib/WordButton.svelte';
-  import ModeButton from './lib/ModeButton.svelte';
-  import Cheatsheet from './lib/Cheatsheet.svelte';
-  import { isRunning } from './lib/stores';
+  import "./assets/style.css"
+  import Display from "./lib/Display.svelte"
+  import ModeButton from "./lib/ModeButton.svelte";
+  import WordButton from "./lib/WordButton.svelte";
+  import SpeedButton from "./lib/SpeedButton.svelte";
+  import LengthButton from "./lib/LengthButton.svelte";
+  import Cheatsheet from "./lib/Cheatsheet.svelte";
+  import { isRunning } from "./lib/stores";
 
   function clickHandler() {
     $isRunning = true;
@@ -21,10 +23,8 @@
   {/if}
   </section>
   <ModeButton/>
-  <label class="label-speed">Speed</label>
-  <button class="btn-speed">Slower</button>
-  <label class="label-length">Length</label>
-  <button class="btn-length">Short</button>
+  <SpeedButton/>
+  <LengthButton/>
   <WordButton on:newWordEvent={clickHandler} isNewWord={true}/>
   <WordButton on:newWordEvent={clickHandler}/>
   <form action="">
@@ -38,18 +38,25 @@
 </main>
 
 <style>
-/* Default Variables */
 :root {
   --primary-color: #ffccbc;
   --secondary-color: #ff8a65;
   --tertiary-color: #ff5722;
 }
 @font-face {
-  font-family: 'Gallaudet';
-  src: url('./assets/fonts/Gallaudet.ttf');
+  font-family: "Gallaudet";
+  src: url("./assets/fonts/Gallaudet.ttf");
 }
 
-/* Body */
+:global(body) {
+  background-color: var(--tertiary-color);
+  color: var(--primary-color);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.8;
+  text-align: center;
+  margin: 0 5%;
+}
+
 main {
   text-align: center;
   padding: 1em;
@@ -70,27 +77,16 @@ form {
     width: 100%;
 }
 
-label {
+:global(label) {
 	align-self: end;
 	grid-column: span 2;
 	grid-row: span 1;
 }
-.label-speed, .btn-speed {
-	grid-column: 1 / 3;
-}
-.label-length, .btn-length {
-	grid-column: 9 / 11;
-}
-.label-length, .label-speed {
-	grid-row: 4 / 5;
-}
-.btn-length, .btn-speed {
-	grid-row: 5 / 6;
-}
+
 section {
   grid-column: 3 / 9;
   grid-row: 1 / 6;
-  font-family: 'Gallaudet';
+  font-family: "Gallaudet";
   font-size: 15em;
   line-height: 200px;
 }
@@ -102,11 +98,11 @@ input {
   border: none;
   font-size: 1.2em;
 }
-input[type='text'] {
+input[type="text"] {
   border-radius: 10px 0 0 10px;
   padding-left: 25px;
 }
-input[type='submit'] {
+input[type="submit"] {
   border-radius: 0 10px 10px 0;
   padding-right: 25px;
   padding-left: 25px;
@@ -119,7 +115,6 @@ input[type="submit"]:hover {
   border: 2px solid var(--primary-color);
 }
 
-/* Buttons */
 :global(button) {
   color: var(--tertiary-color);
   background-color: var(--primary-color);
