@@ -1,22 +1,32 @@
 <script lang="ts">
-  import Cheatsheet from './lib/Cheatsheet.svelte'
-  import Display from './lib/Display.svelte'
-  import a from './assets/img/a.png'
   import './assets/style.css'
+  import a from './assets/img/a.png'
+  import Display from './lib/Display.svelte'
+  import WordButton from './lib/WordButton.svelte';
+  import Cheatsheet from './lib/Cheatsheet.svelte';
+  import { isRunning } from './lib/stores';
+
+  function clickHandler() {
+    $isRunning = true;
+  }
 </script>
 
 <header>
   <h1>Phalanges</h1>
 </header>
 <main>
-  <Display/>
+  <section>
+  {#if $isRunning}
+    <Display/>
+  {/if}
+  </section>
   <button class="btn-mode"><img src={a} alt="A picture of a hand signing the letter a."/></button>
   <label class="label-speed">Speed</label>
   <button class="btn-speed">Slower</button>
   <label class="label-length">Length</label>
   <button class="btn-length">Short</button>
-  <button class="btn-new-word"><i class="fas fa-step-forward"></i></button>
-  <button class="btn-replay"><i class="fas fa-redo"></i></button>
+  <WordButton on:newWordEvent={clickHandler} isNewWord={true}/>
+  <WordButton on:newWordEvent={clickHandler}/>
   <form action="">
     <input class="input-word"
            type="text"
@@ -86,13 +96,12 @@ label {
 .btn-length, .btn-speed {
 	grid-row: 5 / 6;
 }
-.btn-new-word {
-	grid-column: 1 / 3;
-	grid-row: 6 / 7;
-}
-.btn-replay {
-	grid-column: 9 / 11;
-	grid-row: 6 / 7;
+section {
+  grid-column: 3 / 9;
+  grid-row: 1 / 6;
+  font-family: 'Gallaudet';
+  font-size: 15em;
+  line-height: 200px;
 }
 
 /* Input */
@@ -120,7 +129,7 @@ input[type="submit"]:hover {
 }
 
 /* Buttons */
-button {
+:global(button) {
   color: var(--tertiary-color);
   background-color: var(--primary-color);
   font-size: 1.2em;
@@ -128,7 +137,7 @@ button {
   border-radius: 10px;
   transition: 0.2s ease-in;
 }
-button:hover {
+:global(button:hover) {
   color: var(--primary-color);
   background-color: var(--tertiary-color);
   border: 2px solid var(--primary-color);

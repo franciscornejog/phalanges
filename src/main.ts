@@ -6,24 +6,14 @@ const app = new App({
 
 export default app
 
-import shortWords from './assets/words/shortWords.json'
 import mediumWords from './assets/words/mediumWords.json'
 import longWords from './assets/words/longWords.json'
-
-// Get a random word and show it
-let randomNumber = 0;
-let newWordBtn = document.querySelector('.btn-new-word');
-newWordBtn.addEventListener('click', getWord);
-function getWord() {
-    randomNumber = Math.floor(Math.random() * wordLength.length);
-    showLetter(wordLength[randomNumber]);
-}
 
 // Replay word
 let replayBtn = document.querySelector('.btn-replay');
 replayBtn.addEventListener('click', replayWord);
 function replayWord() {
-    showLetter(wordLength[randomNumber]);
+    // showLetter(wordLength[randomNumber]);
 }
 
 // Mode
@@ -53,11 +43,11 @@ let letter = document.querySelector('.show-letter');
 wordForm.addEventListener('submit', function(e) {
     e.preventDefault();
     let input = wordInput.value;
-    if (input === wordLength[randomNumber]) {
-        letter.innerHTML = "<i class='fas fa-check'></i>";
-    } else {
-        letter.innerHTML = "<i class='fas fa-times'></i>";
-    }
+    // if (input === wordLength[randomNumber]) {
+    //     letter.innerHTML = "<i class='fas fa-check'></i>";
+    // } else {
+    //     letter.innerHTML = "<i class='fas fa-times'></i>";
+    // }
     wordInput.value = "";
 });
 
@@ -102,12 +92,12 @@ speedBtn.addEventListener('click', () => {
 // Control length of word
 let lenBtn = document.querySelector('.btn-length');
 let currentLength = lenBtn.textContent;
-let wordLength = shortWords;
+let wordLength = mediumWords;
 checkLength(currentLength);
 function checkLength(len) {
     switch (len) {
         case 'Short':
-            wordLength = shortWords;
+            // wordLength = shortWords;
             break;
         case 'Medium':
             wordLength = mediumWords;
@@ -130,20 +120,4 @@ lenBtn.addEventListener('click', () => {
     lenBtn.textContent = currentLength;
     checkLength(currentLength);
 });
-
-// Show each letter of a word
-let wait = ms => new Promise(resolve => setTimeout(resolve, ms));
-async function showLetter(word) {
-    for (let i = 0, len = word.length; i < len; i++) {
-        if (currentMode === 'text') {
-            letter.textContent = word[i];
-        } else {
-            letter.innerHTML = "<img src='img/" + word[i] + ".png'/>";
-        }
-        checkTime();
-        await wait(time);
-    }
-    letter.textContent = "";
-}
-let checkTime = () => { if (time <= 0) time = 100; }
 
