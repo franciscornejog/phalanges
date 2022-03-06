@@ -20,9 +20,10 @@
 
 <style>
 form {
-  grid-column: 4 / 8;
-  display: flex;
-  justify-content: center;
+  gap: .5em;
+  display: grid;
+  grid-area: answer;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 input {
@@ -30,18 +31,19 @@ input {
   background-color: var(--primary-color);
   border: none;
   font-size: 1.2em;
+  height: 75px;
 }
 
 input[type="text"] {
-  border-radius: 10px 0 0 10px;
+  border-radius: 10px;
   padding-left: 25px;
+  grid-column: 1 / 3;
 }
 
 input[type="submit"] {
-  border-radius: 0 10px 10px 0;
-  padding-right: 25px;
-  padding-left: 25px;
+  border-radius: 10px;
   transition: 0.2s ease-in-out;
+  grid-column: 3 / 4;
 }
 
 input[type="submit"]:hover {

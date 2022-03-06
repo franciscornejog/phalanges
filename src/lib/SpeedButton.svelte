@@ -29,17 +29,10 @@
   }
 </script>
 
-<label>Speed</label>
 <button on:click={clickHandler}>{speedDisplay}</button>
 
 <style>
-  label, button {
-    grid-column: 1 / 3;
-  }
-  label {
-    grid-row: 4 / 5;
-  }
-  button {
-    grid-row: 5 / 6;
-  }
+button {
+  grid-area: speed;
+}
 </style>

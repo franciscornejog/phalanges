@@ -21,8 +21,11 @@
 <style>
   button {
     font-family: "Gallaudet";
-    font-size: 6em;
-    grid-column: 1 / 3;
-    grid-row: 1 / 3;
+    font-size: 6.2em;
+    line-height: 75px;
+    grid-area: mode;
+  }
+  img {
+    padding-bottom: 10px;
   }
 </style>

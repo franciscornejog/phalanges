@@ -8,7 +8,7 @@
 {/if}
 
 <section>
-  {#if $isText}
+  {#if $isText || (!$isText && $letter.includes("class")) }
     {@html $letter}
   {:else if $letter != ""}
     <img src="img/{$letter}.png" alt="A hand showing an ASL letter."/>
@@ -17,10 +17,9 @@
 
 <style>
   section {
-    grid-column: 3 / 9;
-    grid-row: 1 / 6;
     font-family: "Gallaudet";
     font-size: 15em;
-    line-height: 200px;
+    line-height: 350px;
+    grid-area: display;
   }
 </style>

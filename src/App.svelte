@@ -13,12 +13,12 @@
 </header>
 <main>
   <Display/>
-  <ModeButton/>
-  <SpeedButton/>
-  <LengthButton/>
+  <AnswerForm/>
   <WordButton isNewWord={true}/>
   <WordButton/>
-  <AnswerForm/>
+  <ModeButton/>
+  <LengthButton/>
+  <SpeedButton/>
   <Cheatsheet/>
 </main>
 
@@ -36,29 +36,28 @@
 :global(body) {
   background-color: var(--tertiary-color);
   color: var(--primary-color);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Helvetica, sans-serif;
   line-height: 1.8;
   text-align: center;
   margin: 0 5%;
 }
 
 main {
-  text-align: center;
-  padding: 1em;
   margin: 0 auto;
   display: grid;
-  grid: repeat(6, 50px) / repeat(10, 10%);
-  grid-gap: 10px 0;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 350px 75px 75px 75px 1fr;
+  grid-template-areas:
+    "display display display"
+    "answer answer answer"
+    "play replay mode"
+    "speed length cheat"
+    "cheatsheet cheatsheet cheatsheet";
+  gap: .5em;
 }
 
 :global(img) {
     width: 100%;
-}
-
-:global(label) {
-	align-self: end;
-	grid-column: span 2;
-	grid-row: span 1;
 }
 
 :global(button) {

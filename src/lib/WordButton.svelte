@@ -12,19 +12,18 @@
 </script>
 
 {#if isNewWord}
-  <button class:isNewWord on:click={clickHandler}><i class="fas fa-step-forward"></i></button>
+  <button class:isNewWord on:click={clickHandler}><i class="fas fa-play"></i></button>
 {:else}
-  <button on:click={clickHandler} class="btn-replay"><i class="fas fa-redo"></i></button>
+  <button on:click={clickHandler}><i class="fas fa-redo"></i></button>
 {/if}
 
 <style>
+  button {
+    grid-area: replay;
+  }
   .isNewWord {
-    grid-column: 1 / 3;
-    grid-row: 6 / 7;
+    grid-area: play;
   }
-  .btn-replay {
-    grid-column: 9 / 11;
-    grid-row: 6 / 7;
-  }
+
 </style>
 

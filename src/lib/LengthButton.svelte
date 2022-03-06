@@ -24,17 +24,10 @@
   }
 </script>
 
-<label>Length</label>
 <button on:click={clickHandler}>{lengthDisplay}</button>
 
 <style>
-  label, button {
-    grid-column: 9 / 11;
-  }
-  label {
-    grid-row: 4 / 5;
-  }
-  button {
-    grid-row: 5 / 6;
-  }
+button {
+  grid-area: length;
+}
 </style>

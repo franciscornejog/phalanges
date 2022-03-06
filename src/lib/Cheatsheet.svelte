@@ -1,31 +1,26 @@
 <script lang="ts">
   let isClosed: boolean = true;
+
+  function clickHandler() {
+    isClosed = !isClosed;
+  }
 </script>
 
-<section class:isClosed on:click="{() => isClosed = !isClosed}">
-  {#if isClosed}
-    <i class="fas fa-arrow-down"></i>
-  {:else}
-    <img src="img/cheatsheet.png" alt="A list of hand symbols in ASL."/>
-  {/if}
-</section>
+{#if isClosed}
+  <button on:click="{() => isClosed = !isClosed}"><i class="fas fa-arrow-down"></i></button>
+{:else}
+  <button on:click="{() => isClosed = !isClosed}"><i class="fas fa-arrow-up"></i></button>
+  <img src="img/cheatsheet.png" alt="A list of hand symbols in ASL."/>
+{/if}
 
 <style>
-  section {
-    color: var(--tertiary-color);
+  button {
+    grid-area: cheat;
+  }
+  img {
     background-color: var(--primary-color);
-    font-size: 1.2em;
-    margin-top: 10px;
-    padding: 10px 30px;
     border-radius: 10px;
-    grid-column: 2 / 10;
-  }
-  .isClosed {
-    transition: 0.2s ease-in;
-  }
-  .isClosed:hover {
-    background-color: var(--tertiary-color);
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    grid-area: cheatsheet;
+    padding: 10px 0;
   }
 </style>
