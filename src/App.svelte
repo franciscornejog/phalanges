@@ -37,16 +37,21 @@
   background-color: var(--tertiary-color);
   color: var(--primary-color);
   font-family: Helvetica, sans-serif;
+  font-size: calc(15px + 0.390625vw);
   line-height: 1.8;
   text-align: center;
   margin: 0 5%;
+}
+
+h1 {
+  font-size: 1.5rem;
 }
 
 main {
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 350px 75px 75px 75px 1fr;
+  grid-template-rows: 50vh 75px 75px 75px 1fr;
   grid-template-areas:
     "display display display"
     "answer answer answer"
@@ -57,7 +62,9 @@ main {
 }
 
 :global(img) {
-    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
 }
 
 :global(button) {
