@@ -41,6 +41,7 @@
   line-height: 1.8;
   text-align: center;
   margin: 0 5%;
+  overflow: hidden;
 }
 
 h1 {

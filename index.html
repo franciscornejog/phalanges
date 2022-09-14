@@ -2,16 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <!-- <link rel="icon" href="/favicon.ico" /> -->
+    <meta name="description" content="A tool to help ASL Learners practice their fingerspelling comprehension.">
+    <meta name="author" content="Francisco Cornejo-Garcia">
+    <meta name="theme-color" content="#FF5722">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="img/favicon.ico" />
     <link rel="stylesheet"
     href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
     crossorigin="anonymous" />
+    <script type="module" src="../src/main.ts"></script>
     <title>Phalanges</title>
   </head>
   <body>
-    <div id="app"></div>
+    <script>
+        window.addEventListener('DOMContentLoaded', async event => {
+            if ('serviceWorker' in navigator) {
+                await navigator.serviceWorker.register('service-worker.js')
+                .then(result => 
+                    console.log('[Service Worker] Registered: ' + result))
+                .catch(error =>
+                    console.log('[Service Worker] Error: ' + error.message));
+            } else {
+                console.log('[Service Worker] Not available');
+            }
+        });
+    </script>
   </body>
-  <script type="module" src="/src/main.ts"></script>
 </html>
